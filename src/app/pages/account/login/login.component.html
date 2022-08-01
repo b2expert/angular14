@@ -1,1 +1,47 @@
-<p>login works!</p>
+<form #loginForm="ngForm">
+    <section aria-describedby="Header">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    </section>
+
+    <section aria-describedby="Message">
+        <!-- <p class="text-danger">Invalid credentials!</p> -->
+        <!-- <p class="text-success">Login successfull, please wait to go inside dashboard!</p> -->
+    </section>
+
+    <section aria-describedby="Login inputs">
+        <div class="form-floating">
+            <input type="email" class="form-control" #emailRef="ngModel" name="floatingInput" 
+            [(ngModel)]="loginInput.email" placeholder="name@example.com"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+            <label for="floatingInput">Email address</label>
+
+            <p *ngIf="emailRef.errors && emailRef.touched" class="text-danger">
+                <span *ngIf="emailRef.errors['required']">Email field is required!</span>
+                <span *ngIf="emailRef.errors['pattern']">Invalid email address!</span>
+            </p>
+        </div>
+        <div class="form-floating mt-3">
+            <input type="password" class="form-control" #passwordRef="ngModel" name="floatingPassword" [(ngModel)]="loginInput.password" placeholder="Password" required>
+            <label for="floatingPassword">Password</label>
+
+            <p *ngIf="passwordRef.errors && passwordRef.touched" class="text-danger">
+                <span *ngIf="passwordRef.errors['required']">Email field is required!</span>
+            </p>
+        </div>
+
+        <div class="checkbox mb-3 mt-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+    </section>
+
+    <section aria-describedby="Button action">
+        <button class="w-100 btn btn-lg btn-primary" type="submit"
+        [disabled]="loginForm.invalid">Sign in</button>
+    </section>
+</form>
+
+<section aria-describedby="Navigation">
+    <p class="mt-3"><a class="text-primary" routerLink="../forgot-password">Forgot password ?</a></p>
+</section>
