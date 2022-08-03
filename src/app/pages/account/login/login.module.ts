@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
       {
         path: '', 
         component: LoginComponent,
-        title: 'Login Page'
+        // title: 'Login Page'
       }
     ])
   ]

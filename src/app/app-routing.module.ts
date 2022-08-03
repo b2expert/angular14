@@ -9,11 +9,18 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'account/login',
+    path: 'account',
     component: AccountComponent,
+    data: { pageTitle: 'Account Master Page' },
     children: [
       {
-        path: '',
+        path: 'login',
+        data: { pageTitle: 'Login Page' },
+        loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: 'forgot-password',
+        data: { pageTitle: 'Forgot Password Page' },
         loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
       }
     ]
