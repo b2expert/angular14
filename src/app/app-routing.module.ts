@@ -11,16 +11,16 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
-    data: { pageTitle: 'Account Master Page' },
+    data: { pageTitle: "Account Master Page" },
     children: [
       {
         path: 'login',
-        data: { pageTitle: 'Login Page' },
+        data: { pageTitle: "Login Page" },
         loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
       },
       {
         path: 'forgot-password',
-        data: { pageTitle: 'Forgot Password Page' },
+        data: { pageTitle: "Forgot Password Page" },
         loadChildren: () => import('./pages/account/login/login.module').then(m => m.LoginModule)
       }
     ]

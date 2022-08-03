@@ -17,19 +17,18 @@ export class TitleResolver {
         this._title.setTitle(this._baseTitle + ' | ' + pageTitle);
     }
 
-    getPageTitleFromActiveRoute(activatedRoute: ActivatedRoute) {
+    getRouterPageTitle(route: ActivatedRoute) {
 
-        let child = activatedRoute.firstChild;
+        let child = route.firstChild;
 
-        if(!child) {
-            return activatedRoute.snapshot.data['pageTitle'];
+        if (!child) {
+            return route.snapshot.data['pageTitle'];
         }
 
-        while(child?.firstChild) {
-            child = child.firstChild;
+        while (child.firstChild) {
+            child = child?.firstChild;
         }
 
-        return child.snapshot.data['pageTitle']
-
+        return child.snapshot.data['pageTitle'];
     }
 }

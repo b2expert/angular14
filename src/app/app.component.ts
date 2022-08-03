@@ -12,14 +12,17 @@ export class AppComponent {
   
   constructor(
     private _router: Router,
-    private _activatedRoute: ActivatedRoute,
+    private _route: ActivatedRoute,
     private _titleResolver: TitleResolver
   ) {
+
     this._router.events.pipe(
       filter(e => e instanceof NavigationEnd),
-      map(r => this._titleResolver.getPageTitleFromActiveRoute(this._activatedRoute))
+      map(e => this._titleResolver.getRouterPageTitle(this._route))
     ).subscribe(pageTitle => {
       _titleResolver.updateTitle(pageTitle);
-    });
+    })
+
   }
+
 }
