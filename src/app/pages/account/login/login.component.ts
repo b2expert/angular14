@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { ILogin } from '../models/login.interface';
 
@@ -16,13 +17,16 @@ export class LoginComponent implements OnInit {
   apiResponse: any = {};
   sending: boolean = false;
 
-  constructor(private _accountContext: AccountService) {}
+  constructor(
+    private _accountContext: AccountService,
+    private _router: Router
+    ) {}
 
   ngOnInit(): void {}
 
   postLoginForm() {
     this.sending = true;
-    this._accountContext.login(this.loginInput).subscribe((apiResponse) => {
+    this._accountContext.login(this.loginInput).subscribe((apiResponse: any) => {
       this.apiResponse = apiResponse;
       this.sending = false;
 
@@ -36,6 +40,12 @@ export class LoginComponent implements OnInit {
       if (this.loginInput.remeberMe) {
         localStorage.setItem('remeberMe', `${this.loginInput.remeberMe}`);
       } else localStorage.removeItem('remeberMe');
+
+      // Redirect user to dashboard
+      if(apiResponse && apiResponse.id) {
+        localStorage.setItem('myToken', apiResponse.data);
+        this._router.navigate(['dashboard']);
+      }
     });
   }
 }
