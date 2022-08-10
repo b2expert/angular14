@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { ILogin } from '../models/login.interface';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   sending: boolean = false;
 
   constructor(
-    private _accountContext: AccountService,
+    private _accountContext: AuthService,
     private _router: Router
     ) {}
 
