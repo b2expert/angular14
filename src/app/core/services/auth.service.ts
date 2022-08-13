@@ -25,7 +25,6 @@ export class AuthService {
         return this._httpClient
         .get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
         .pipe(map((apiResponse: any) => {
-            // apiResponse.data.profilePic =  + apiResponse.data.profilePic;
             return apiResponse.data;
         }))
     }
