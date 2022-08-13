@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountComponent } from './core/components/layouts/account/account.component';
 import { DashboardComponent } from './core/components/layouts/dashboard/dashboard.component';
+import { AbsFilePathPipe } from './core/pipes/abs-file-path.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
-    DashboardComponent
+    DashboardComponent,
+    AbsFilePathPipe
   ],
   imports: [
     BrowserModule,

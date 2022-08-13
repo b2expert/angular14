@@ -9,7 +9,7 @@
     <div class="dropdown dp-wrapper">
       <div class="text-white cursor-pointer dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Hi! {{user.firstName}} ({{user.roleName}})
-        <img src="https://blog.beginner2expert.com/wp-content/uploads/2022/08/cropped-b2e-favicon-180x180.png" alt="">
+        <img [src]="user.profilePic | absFilePath" alt="">
       </div>
       <ul class="dropdown-menu">
         <li><button class="dropdown-item" type="button">Profile</button></li>

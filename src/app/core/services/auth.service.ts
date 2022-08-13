@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
+import { environment } from "src/environments/environment";
 import { ILogin } from "../../pages/account/models/login.interface";
 
 @Injectable({providedIn: 'root'})
@@ -24,6 +25,7 @@ export class AuthService {
         return this._httpClient
         .get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
         .pipe(map((apiResponse: any) => {
+            // apiResponse.data.profilePic =  + apiResponse.data.profilePic;
             return apiResponse.data;
         }))
     }
