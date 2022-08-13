@@ -11,7 +11,8 @@ export class AuthService {
     }
 
     login(input: ILogin) {
-        return this._httpClient.post('https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login', input);
+        return this._httpClient
+        .post('https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login', input);
     }
 
     loadUser() {
@@ -20,7 +21,8 @@ export class AuthService {
                 'Authorization': 'Bearer ' + localStorage.getItem('myToken')
             }
         };
-        return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
+        return this._httpClient
+        .get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details', headers)
         .pipe(map((apiResponse: any) => {
             return apiResponse.data;
         }))
