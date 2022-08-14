@@ -1,4 +1,4 @@
-<ng-container *ngIf="user$ | async as user">
+<ng-container>
   <header
     class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
   >
@@ -6,7 +6,7 @@
       >Beginner 2 Expert</a
     >
     
-    <div class="dropdown dp-wrapper">
+    <div class="dropdown dp-wrapper" *ngIf="user$ | async as user">
       <div class="text-white cursor-pointer dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Hi! {{user.firstName}} ({{user.roleName}})
         <img [src]="user.profilePic | absFilePath" alt="">
@@ -51,7 +51,7 @@
                 Dashboard
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [authorize]="['Admin', 'Supervisor']">
               <a class="nav-link active" aria-current="page" href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@
                 Products
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [authorize]="['Admin', 'Supervisor']">
               <a class="nav-link active" aria-current="page" href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@
                 Orders
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [authorize]="['Admin']">
               <a class="nav-link active" aria-current="page" href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@
                 Customers
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [authorize]="['Admin']">
               <a class="nav-link active" aria-current="page" href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
