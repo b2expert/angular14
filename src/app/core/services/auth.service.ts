@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { ILogin } from '../../pages/account/models/login.interface';
 import { IUser } from '../models/user.interface';
 

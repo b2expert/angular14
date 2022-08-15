@@ -6,10 +6,10 @@
       >Beginner 2 Expert</a
     >
     
-    <div class="dropdown dp-wrapper" *ngIf="user$ | async as user">
+    <div class="dropdown dp-wrapper">
       <div class="text-white cursor-pointer dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Hi! {{user.firstName}} ({{user.roleName}})
-        <img [src]="user.profilePic | absFilePath" alt="">
+        Hi! {{authContext.user.firstName}} ({{authContext.user.role}})
+        <img [src]="authContext.user.profilePicPath | absFilePath" alt="">
       </div>
       <ul class="dropdown-menu">
         <li><button class="dropdown-item" type="button">Profile</button></li>

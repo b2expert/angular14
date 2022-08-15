@@ -8,10 +8,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  user$: Observable<any>;
+  // user$: Observable<any>;
 
-  constructor(private _authContext: AuthService) {
-    this.user$ = this._authContext.loadUser();
+  constructor(public authContext: AuthService) {
+    // this.user$ = this._authContext.loadUser();
   }
 
   ngOnInit(): void {}
