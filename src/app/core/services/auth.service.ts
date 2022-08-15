@@ -6,6 +6,13 @@ import { IUser } from '../models/user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+  private _headers = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('myToken'),
+    },
+  };
+
   private _user: IUser;
   public get user() {
     return this._user;
@@ -23,15 +30,10 @@ export class AuthService {
   }
 
   loadUser() {
-    const headers = {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('myToken'),
-      },
-    };
     return this._httpClient
       .get(
         'https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details',
-        headers
+        this._headers
       )
       .pipe(delay(2000))
       .pipe(
@@ -45,5 +47,9 @@ export class AuthService {
           return this._user;
         })
       );
+  }
+
+  logout() {
+    return this._httpClient.get('https://ytc.beginner2expert.com/angular14/api/public/secure/user/logout', this._headers);
   }
 }
