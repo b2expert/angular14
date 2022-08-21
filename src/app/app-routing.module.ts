@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './core/components/layouts/account/account.component';
 import { DashboardComponent } from './core/components/layouts/dashboard/dashboard.component';
+import { AuthGuardService } from './core/services/auth-guard.service';
 import { DataResolverService } from './core/services/data-resolver.service';
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuardService],
     resolve: {
       user: DataResolverService
     },

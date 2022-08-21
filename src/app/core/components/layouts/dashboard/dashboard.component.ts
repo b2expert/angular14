@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -9,10 +8,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  // user$: Observable<any>;
 
   constructor(public authContext: AuthService, private _router: Router) {
-    // this.user$ = this._authContext.loadUser();
   }
 
   ngOnInit(): void {}
@@ -23,6 +20,6 @@ export class DashboardComponent implements OnInit {
         localStorage.removeItem('myToken');
         this._router.navigate(['/']);
       }
-    })
+    });
   }
 }

@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
 
       // Redirect user to dashboard
       if(apiResponse && apiResponse.id) {
+        this._accountContext.token = apiResponse.data;
         localStorage.setItem('myToken', apiResponse.data);
         this._router.navigate(['dashboard']);
       }

@@ -18,8 +18,17 @@ export class AuthService {
     return this._user;
   }
 
+  private _token: string;
+  public get token() {
+    return this._token;
+  }
+  public set token(value: string) {
+    this._token = value;
+  }
+
   constructor(private _httpClient: HttpClient) {
     this._user = { firstName: '', profilePicPath: '', role: '', userCode: '' };
+    this._token = localStorage.getItem('myToken') || '';
   }
 
   login(input: ILogin) {
