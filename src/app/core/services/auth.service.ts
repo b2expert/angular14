@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, map } from 'rxjs';
+import { delay, map, Observable } from 'rxjs';
 import { AppConstants } from 'src/app/constants';
 import { ILogin } from '../../pages/account/models/login.interface';
+import { IAPIResponse } from '../models';
 import { IUser } from '../models/user.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -32,11 +33,15 @@ export class AuthService {
     this._token = localStorage.getItem(AppConstants.myTokenKey) || '';
   }
 
-  login(input: ILogin) {
+  login(input: ILogin): Observable<IAPIResponse> {
     return this._httpClient.post(
       'https://ytc.beginner2expert.com/angular14/api/public/lesssecure/account/login',
       input
-    );
+    ).pipe(map(apiResponse => {
+      const model = apiResponse as IAPIResponse;
+
+      return model;
+    }));
   }
 
   loadUser() {
@@ -45,7 +50,6 @@ export class AuthService {
         'https://ytc.beginner2expert.com/angular14/api/public/secure/user/basic/details',
         this._headers
       )
-      .pipe(delay(2000))
       .pipe(
         map((apiResponse: any) => {
           this._user = {

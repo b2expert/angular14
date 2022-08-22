@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   sending: boolean = false;
 
   constructor(
-    private _accountContext: AuthService,
+    private _authContext: AuthService,
     private _router: Router
     ) {}
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   postLoginForm() {
     this.sending = true;
-    this._accountContext.login(this.loginInput).subscribe((apiResponse: any) => {
+    this._authContext.login(this.loginInput).subscribe(apiResponse => {
       this.apiResponse = apiResponse;
       this.sending = false;
 
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
       // Redirect user to dashboard
       if(apiResponse && apiResponse.id) {
-        this._accountContext.token = apiResponse.data;
+        this._authContext.token = apiResponse.data;
         localStorage.setItem(AppConstants.myTokenKey, apiResponse.data);
         this._router.navigate(['dashboard']);
       }
