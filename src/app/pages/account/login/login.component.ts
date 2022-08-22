@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppConstants } from 'src/app/constants';
 import { AuthService } from '../../../core/services/auth.service';
 import { ILogin } from '../models/login.interface';
 
@@ -10,8 +11,8 @@ import { ILogin } from '../models/login.interface';
 })
 export class LoginComponent implements OnInit {
   loginInput: ILogin = {
-    userName: localStorage.getItem('username') || '',
-    remeberMe: localStorage.getItem('remeberMe') === 'true',
+    userName: localStorage.getItem(AppConstants.usernameKey) || '',
+    remeberMe: localStorage.getItem(AppConstants.remeberMeKey) === 'true',
     password: '',
   };
   apiResponse: any = {};
@@ -32,19 +33,19 @@ export class LoginComponent implements OnInit {
 
       if (this.loginInput.userName) {
         // Store username to browser storage
-        localStorage.setItem('username', this.loginInput.userName);
+        localStorage.setItem(AppConstants.usernameKey, this.loginInput.userName);
       } else {
-        localStorage.removeItem('username');
+        localStorage.removeItem(AppConstants.usernameKey);
       }
 
       if (this.loginInput.remeberMe) {
-        localStorage.setItem('remeberMe', `${this.loginInput.remeberMe}`);
-      } else localStorage.removeItem('remeberMe');
+        localStorage.setItem(AppConstants.remeberMeKey, `${this.loginInput.remeberMe}`);
+      } else localStorage.removeItem(AppConstants.remeberMeKey);
 
       // Redirect user to dashboard
       if(apiResponse && apiResponse.id) {
         this._accountContext.token = apiResponse.data;
-        localStorage.setItem('myToken', apiResponse.data);
+        localStorage.setItem(AppConstants.myTokenKey, apiResponse.data);
         this._router.navigate(['dashboard']);
       }
     });
