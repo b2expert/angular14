@@ -1,44 +1,86 @@
 <form #loginForm="ngForm" (submit)="postLoginForm()">
-    <section aria-describedby="Header" class="text-center">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-    </section>
+  <section aria-describedby="Header" class="text-center">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  </section>
 
-    <section aria-describedby="Message" *ngIf="apiResponse.message">
-        <p [ngClass]="{'text-danger': apiResponse.id < 0, 'text-success': apiResponse.id > 0 }">{{apiResponse.message}}</p>
-    </section>
+  <section aria-describedby="Message" *ngIf="apiResponse.message">
+    <p
+      [ngClass]="{
+        'text-danger': apiResponse.id < 0,
+        'text-success': apiResponse.id > 0
+      }"
+    >
+      {{ apiResponse.message }}
+    </p>
+  </section>
 
-    <section aria-describedby="Login inputs">
-        <div class="form-floating">
-            <input type="email" class="form-control" #emailRef="ngModel" name="floatingInput" 
-            [(ngModel)]="loginInput.userName" placeholder="Enter user name..." required>
-            <label for="floatingInput">Username</label>
+  <section aria-describedby="Login inputs">
+    <div class="form-floating">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="email"
+          #emailRef="ngModel"
+          name="floatingInput"
+          [(ngModel)]="loginInput.userName"
+          placeholder="Enter user name..."
+          required
+        />
+      </mat-form-field>
 
-            <p *ngIf="emailRef.errors && emailRef.touched" class="text-danger">
-                <span *ngIf="emailRef.errors['pattern']">Invalid email address!</span>
-            </p>
-        </div>
-        <div class="form-floating mt-3">
-            <input type="password" class="form-control" #passwordRef="ngModel" name="floatingPassword" [(ngModel)]="loginInput.password" placeholder="Enter password..." required>
-            <label for="floatingPassword">Password</label>
+      <p *ngIf="emailRef.errors && emailRef.touched" class="text-danger">
+        <span *ngIf="emailRef.errors['pattern']">Invalid email address!</span>
+      </p>
+    </div>
+    <div class="form-floating mt-3">
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          #passwordRef="ngModel"
+          name="floatingPassword"
+          [(ngModel)]="loginInput.password"
+          placeholder="Enter password..."
+          required
+        />
+      </mat-form-field>
+      <p *ngIf="passwordRef.errors && passwordRef.touched" class="text-danger">
+        <span *ngIf="passwordRef.errors['required']"
+          >Email field is required!</span
+        >
+      </p>
+    </div>
 
-            <p *ngIf="passwordRef.errors && passwordRef.touched" class="text-danger">
-                <span *ngIf="passwordRef.errors['required']">Email field is required!</span>
-            </p>
-        </div>
+    <div class="checkbox mb-3 mt-3">
+      <label>
+        <input
+          type="checkbox"
+          name="remeberme"
+          [(ngModel)]="loginInput.remeberMe"
+          value="remember-me"
+        />
+        Remember me
+      </label>
+    </div>
+  </section>
 
-        <div class="checkbox mb-3 mt-3">
-            <label>
-                <input type="checkbox" name="remeberme" [(ngModel)]="loginInput.remeberMe" value="remember-me"> Remember me
-            </label>
-        </div>
-    </section>
-
-    <section aria-describedby="Button action">
-        <button class="w-100 btn btn-lg btn-primary" type="submit"
-        [disabled]="loginForm.invalid || sending">{{sending ? 'Please wait...': 'Sign in'}}</button>
-    </section>
+  <section aria-describedby="Button action">
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      type="submit"
+      [disabled]="loginForm.invalid || sending"
+    >
+      {{ sending ? "Please wait..." : "Sign in" }}
+    </button>
+  </section>
 </form>
 
 <section aria-describedby="Navigation" class="text-center">
-    <p class="mt-3"><a class="text-primary" routerLink="../forgot-password">Forgot password ?</a></p>
+  <p class="mt-3">
+    <a class="text-primary" routerLink="../forgot-password"
+      >Forgot password ?</a
+    >
+  </p>
 </section>
