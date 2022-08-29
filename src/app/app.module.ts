@@ -1,26 +1,18 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccountComponent } from './core/components/layouts/account/account.component';
-import { DashboardComponent } from './core/components/layouts/dashboard/dashboard.component';
-import { AuthorizeDirective } from './core/directives/authorize.directive';
-import { AbsFilePathPipe } from './core/pipes/abs-file-path.pipe';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AccountComponent,
-    DashboardComponent,
-    AbsFilePathPipe,
-    AuthorizeDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
