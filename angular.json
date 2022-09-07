@@ -104,6 +104,37 @@
           }
         }
       }
+    },
+    "b2e-grid": {
+      "projectType": "library",
+      "root": "projects/b2e-grid",
+      "sourceRoot": "projects/b2e-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/b2e-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/b2e-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/b2e-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/b2e-grid/src/test.ts",
+            "tsConfig": "projects/b2e-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/b2e-grid/karma.conf.js"
+          }
+        }
+      }
     }
   }
 }
