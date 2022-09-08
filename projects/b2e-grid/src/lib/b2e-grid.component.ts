@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'lib-b2e-grid',
   template: `
     <p>
-      b2e-grid works!
+      Testing grid content reflection
     </p>
   `,
   styles: [

@@ -39,16 +39,27 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuardService],
     resolve: {
-      user: DataResolverService
+      user: DataResolverService,
     },
     data: { pageTitle: 'Dashboard Master Layout' },
     children: [
       {
         path: '',
         data: { pageTitle: 'Dashboard Summary' },
-        loadChildren: () => import('./pages/dashboard/summary/summary.module').then(m => m.SummaryModule)
-      }
-    ]
+        loadChildren: () =>
+          import('./pages/dashboard/summary/summary.module').then(
+            (m) => m.SummaryModule
+          ),
+      },
+      {
+        path: 'customer',
+        data: { pageTitle: 'Customer' },
+        loadChildren: () =>
+          import('./pages/dashboard/customer/customer.module').then(
+            (m) => m.CustomerModule
+          ),
+      },
+    ],
   },
 ];
 
