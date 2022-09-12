@@ -11,7 +11,7 @@ import { CustomerService, ICustomer } from 'src/app/shared';
 export class CustomerComponent implements OnInit {
 
   columnsToDisplay = [
-    'SL', 'custName', 'mobileNo', 'DOB', 'Order'
+    'SL', 'custName', 'mobileNo', 'DOB', 'order'
   ];
   customers$: Observable<ICustomer[]> = new Observable();
 
