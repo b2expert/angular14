@@ -6,5 +6,9 @@
 </div>
 
 <div>
-  <lib-b2e-grid></lib-b2e-grid>
+  <lib-b2e-grid
+    [cols]="columnsToDisplay"
+    [rows]="(customers$ | async) || []"
+  >
+  </lib-b2e-grid>
 </div>

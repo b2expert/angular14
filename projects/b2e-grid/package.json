@@ -1,5 +1,5 @@
 {
-  "name": "b2e-grid",
+  "name": "@b2e/grid",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^14.0.0",

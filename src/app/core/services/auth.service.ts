@@ -42,7 +42,7 @@ export class AuthService {
       map((apiResponse: any) => {
         this._user = {
           ...apiResponse.data,
-          profilePicPath: apiResponse.data.profilePic,
+          profilePicPath: 'https://ytc.beginner2expert.com/angular14/api/' + apiResponse.data.profilePic,
           role: apiResponse.data.roleName,
         };
 

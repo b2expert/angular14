@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CustomerService, ICustomer } from 'src/app/shared';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  styleUrls: ['./customer.component.scss'],
+  providers: [CustomerService],
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  columnsToDisplay = [
+    'SL', 'custName', 'mobileNo', 'DOB', 'Order'
+  ];
+  customers$: Observable<ICustomer[]> = new Observable();
+
+  constructor(public customerContext: CustomerService) {}
 
   ngOnInit(): void {
+    this.customers$ = this.customerContext.loadCustomerList();
   }
-
 }

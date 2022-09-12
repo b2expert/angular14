@@ -9,7 +9,7 @@
     <div class="dropdown dp-wrapper">
       <div class="text-white cursor-pointer dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Hi! {{authContext.user.firstName}} ({{authContext.user.role}})
-        <img [src]="authContext.user.profilePicPath | absFilePath" alt="">
+        <img [src]="authContext.user.profilePicPath" alt="">
       </div>
       <ul class="dropdown-menu">
         <li><button class="dropdown-item" type="button">Profile</button></li>
